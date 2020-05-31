@@ -39,7 +39,6 @@ public class Fitness {
          System.out.println("Personal number?");
          Scanner scMemberID = new Scanner(System.in);
          String mid = scMemberID.nextLine();
-         //int midint = Integer.parseInt(mid);
          
          System.out.println("Password?");
          Scanner scPassword = new Scanner(System.in);
@@ -47,15 +46,11 @@ public class Fitness {
          
          try {
             Statement st = conn.createStatement();
-            //st.executeUpdate("INSERT INTO Person (PNr, FNamn, ENamn) VALUES ('"+personNr+"', '"+förNamn+"', '"+efterNamn+"')");
             
             //TO DO!!fetch db personalNr -> midint.Equals(PersonalNr) ->  ->fetch db Password -> pw.Equals(Password)
             if (mid != null && pw != null) {
                String validate = "Select * from Member where PersonalNr='" + mid + "' and Password='" + pw + "'";
                ResultSet rs = st.executeQuery(validate);
-               //ResultSet rs = conn.prepareStatement(validate);
-               //Statement stmt = conn.createStatement();
-               //ResultSet rs = stmt.executeQuery(selecte);
 
                if (rs.next()) {
                   //enter
@@ -66,11 +61,8 @@ public class Fitness {
                   //dont enter + error message
                   System.out.println("Invalid Username or Password");
                   System.exit(0);
-                  //break;
                }
-          }
-          
-            
+         } 
             
          }
          catch (Exception e) {
@@ -103,8 +95,6 @@ public class Fitness {
             
             case 'A':
             
-            //System.out.println("Enter new Member ID");
-            // int MemberID = Integer.parseInt(input.readLine());
             System.out.println("Enter Level (Gold, Silver or Bronze)");
              String Level = input.readLine();
             System.out.println("Enter first name");
@@ -124,7 +114,6 @@ public class Fitness {
             
                String inserta = "INSERT INTO Member (Level, FirstName, LastName, PersonalNr,PhoneNr, Mail, Password) VALUES (?,?,?,?,?,?,?)";
                PreparedStatement pstmt = conn.prepareStatement(inserta);
-               //pstmt.setInt(1, MemberID);
                pstmt.setString(1, Level);
                pstmt.setString(2, FirstName);
                pstmt.setString(3, LastName);
@@ -218,36 +207,12 @@ public class Fitness {
                try {
                   Statement st = conn.createStatement();
                   ResultSet rs = st.executeQuery("select * from Membership where MemberID='"+ memIDAccess + "' AND date('now') < ExpirationDate");
-                  //String selectD = "select ExpirationDate from Membership where MemberID='" + pw + "'";
                   
                   if (!rs.next() ) {
                      System.out.println("Membership invalid");
                   } else {
                      System.out.println("Membership valid");
-                  }
-                  
-                  /*
-                  ArrayList<Integer> array = new ArrayList<>();
-                  while (rs.next()) {
-                     array.add(rs.getInt("ExpirationDate"));
-                  }
-                  int expiryDate = rs.getInt("ExpirationDate");
-                  int todaysDate = Integer.parseInt(java.time.LocalDate.now());
-                  */
-                  /*SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                  Date date1 = sdf.parse("expiryDate");
-                  Date date2 = java.time.LocalDate.now();
-                  
-                  if (date2.after(date1)) {
-                     System.out.println("Access granted");
-                     System.out.println("Expiration date is after today's date.");
-                  }
-                  if (date2.before(date1)) {
-                     System.out.println("Access denied");
-                     System.out.println("Expiration date is before today's date.");  
-                  }   
-                  */
-                     
+                  }     
                               
                }
                catch (java.sql.SQLException e) {
@@ -364,8 +329,6 @@ public class Fitness {
                   System.out.println("Course " + JMomID + " cancelled succesfully.");
                }
             
-            
-            
                catch (java.sql.SQLException e2){
                   System.out.println(e2.getMessage());
                }
@@ -382,7 +345,6 @@ public class Fitness {
             System.exit(0);
             break;
             
-
             default:
             System.out.println("Bokstav finns inte! \nDet måste vara en versal. Testa en ny eller samma bokstav");
             break;
@@ -394,8 +356,6 @@ public class Fitness {
       
       case "U":
             
-            //System.out.println("Enter new Member ID");
-            // int MemberID = Integer.parseInt(input.readLine());
             Scanner scCreateUser = new Scanner(System.in);
             
             System.out.println("Enter Level (Gold, Silver or Bronze)");
@@ -417,7 +377,6 @@ public class Fitness {
             
                String inserta = "INSERT INTO Member (Level, FirstName, LastName, PersonalNr,PhoneNr, Mail, Password) VALUES (?,?,?,?,?,?,?)";
                PreparedStatement pstmt = conn.prepareStatement(inserta);
-               //pstmt.setInt(1, MemberID);
                pstmt.setString(1, Level);
                pstmt.setString(2, FirstName);
                pstmt.setString(3, LastName);
@@ -451,11 +410,7 @@ public class Fitness {
             break;
       
       }
-      }
-      
-      
-      
-               
+      }         
 
    }
 public static void mainScreen() {
