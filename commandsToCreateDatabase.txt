@@ -1,0 +1,65 @@
+CREATE TABLE Course
+(
+	CourseID NUMBER PRIMARY KEY,
+	CourseName TEXT
+);
+CREATE TABLE CourseMoment
+(
+	MomentID NUMBER PRIMARY KEY,
+	CourseID NUMBER,
+	Time NUMBER,
+	InstructorID NUMBER,
+	Duration NUMBER,
+	RoomNr NUMBER,
+	Status TEXT DEFAULT Active,
+	FOREIGN KEY(CourseID) REFERENCES Course(CourseID),
+	FOREIGN KEY(RoomNr) REFERENCES Room(RoomNr),
+	FOREIGN KEY(CourseID) REFERENCES Course(CourseID)
+);
+CREATE TABLE Instructor
+(
+	InstructorID NUMBER PRIMARY KEY,
+	FirstName TEXT,
+	LastName TEXT
+);
+CREATE TABLE Room
+(
+	RoomNr NUMBER PRIMARY KEY,
+	Capacity NUMBER,
+	Location TEXT
+);
+CREATE TABLE CourseEnrollment
+(
+	MomentID NUMBER,
+	MemberID NUMBER,
+	FOREIGN KEY(MomentID) REFERENCES CourseMoment(MomentID),
+	FOREIGN KEY(MemberID) REFERENCES Member(MemberID)
+);
+
+CREATE TABLE MembershipType
+(
+	Level TEXT PRIMARY KEY,
+	PricePerYearSEK NUMBER,
+	GymAccess TEXT,
+	CourseAccess TEXT,
+	PTAccess TEXT
+);
+CREATE TABLE Member
+(
+	MemberID INTEGER PRIMARY KEY AUTOINCREMENT,
+	Level TEXT,
+	FirstName TEXT,
+	LastName TEXT,
+	PersonalNr NUMBER,
+	PhoneNr NUMBER,
+	Mail TEXT,
+	Password TEXT,
+	FOREIGN KEY(Level) REFERENCES MembershipType(Level)
+);
+CREATE TABLE Membership
+(
+	MemberID NUMBER PRIMARY KEY,
+	StartDate DATE,
+	ExpirationDate DATE,
+	FOREIGN KEY(MemberID) REFERENCES Member(MemberID)
+);

@@ -1,0 +1,32 @@
+INSERT INTO MembershipType (Level,PricePerYearSEK,GymAccess,CourseAccess,PTAccess) values ('Gold',5000,'Yes','Yes','Yes');
+INSERT INTO MembershipType (Level,PricePerYearSEK,GymAccess,CourseAccess,PTAccess) values ('Silver',3000,'Yes','Yes','No');
+INSERT INTO MembershipType (Level,PricePerYearSEK,GymAccess,CourseAccess,PTAccess) values ('Bronze',2000,'Yes','No','No');
+
+INSERT INTO Member (MemberID,Level,FirstName,LastName,PersonalNr,PhoneNr,Mail,Password) values (1234,'Gold','Karl','Karlsson',199410101010,0732811922,'karl.kalle@gmail.com','Hejanka');
+INSERT INTO Member (MemberID,Level,FirstName,LastName,PersonalNr,PhoneNr,Mail,Password) values (5678,'Silver','Silvia','Silversson',199511111011,0724252627,'s.silversson@gmail.com','silversson');
+INSERT INTO Member (MemberID,Level,FirstName,LastName,PersonalNr,PhoneNr,Mail,Password) values (9112,'Bronze','Kasper','Kaspersson',199601012020,0735678910,'kasper98@hotmail.com','Älskafotboll');
+
+INSERT INTO Membership (MemberID,StartDate,ExpirationDate) values (1234,'2020-12-31','2021-12-31');
+INSERT INTO Membership (MemberID,StartDate,ExpirationDate) values (5678,'2019-12-12','2020-12-12');
+INSERT INTO Membership (MemberID,StartDate,ExpirationDate) values (9112,'2020-04-04','2021-04-04');
+INSERT INTO Membership (MemberID,StartDate,ExpirationDate) values (9211,'2020-04-05','2020-04-30');
+
+INSERT INTO Room (RoomNr,Capacity,Location) values (1,45,'Kalastorget');
+INSERT INTO Room (RoomNr,Capacity,Location) values (2,25,'Festgatan');
+INSERT INTO Room (RoomNr,Capacity,Location) values (3,60,'Kalastorget');
+
+INSERT INTO Course (CourseID,CourseName) values (9999,'Spinning');
+INSERT INTO Course (CourseID,CourseName) values (8888,'Bodypump');
+INSERT INTO Course (CourseID,CourseName) values (7777,'Zumba');
+
+INSERT INTO Instructor (InstructorID,FirstName,LastName) values (2221,'Sven','Svensson');
+INSERT INTO Instructor (InstructorID,FirstName,LastName) values (2222,'Anna','Andersson');
+INSERT INTO Instructor (InstructorID,FirstName,LastName) values (2223,'Petra','Pettersson');
+
+INSERT INTO CourseMoment (MomentID,CourseID,InstructorID,RoomNr,Time,Duration) values (123,9999,2221,3,1400,55);
+INSERT INTO CourseMoment (MomentID,CourseID,InstructorID,RoomNr,Time,Duration) values (345,8888,2223,2,1700,30);
+INSERT INTO CourseMoment (MomentID,CourseID,InstructorID,RoomNr,Time,Duration) values (678,7777,2222,1,1900,90);
+
+INSERT INTO CourseEnrollment (MemberID,MomentID) values (1234,123);
+INSERT INTO CourseEnrollment (MemberID,MomentID) values (5678,456);
+INSERT INTO CourseEnrollment (MemberID,MomentID) values (9112,789);
