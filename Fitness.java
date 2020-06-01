@@ -327,6 +327,7 @@ public class Fitness {
                   pstmt.close();
                   
                   System.out.println("Course " + JMomID + " cancelled succesfully.");
+                  System.out.println("Cancellation notifications has been sent to participants");
                }
             
                catch (java.sql.SQLException e2){
