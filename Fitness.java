@@ -75,7 +75,7 @@ public class Fitness {
       
          while (fortsatt) {
       
-         System.out.println("A - New member");
+         //System.out.println("A - New member");
          //create membership duration
     	   System.out.println("B - New Enrollment");
          System.out.println("C - Choose course to enroll");
@@ -94,7 +94,7 @@ public class Fitness {
          switch (val) {
             
             case 'A':
-            
+            //hidden at the moment, maybe needed for demonstration.
             System.out.println("Enter Level (Gold, Silver or Bronze)");
              String Level = input.readLine();
             System.out.println("Enter first name");
