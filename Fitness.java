@@ -297,14 +297,14 @@ public class Fitness {
             System.out.println("Enter your Memberid:");
              int IMemID = Integer.parseInt(input.readLine());
             
-            try {
-               String inserti = "DELETE FROM CourseEnrollment WHERE MomentID = ? AND MemberID = ?";
-               PreparedStatement pstmt = conn.prepareStatement(inserti);
-               pstmt.setInt(1, IMomID);
-               pstmt.setInt(2, IMemID);
-               pstmt.executeUpdate();
-               pstmt.close();
-            }
+               try {
+                  String inserti = "DELETE FROM CourseEnrollment WHERE MomentID = ? AND MemberID = ?";
+                  PreparedStatement pstmt = conn.prepareStatement(inserti);
+                  pstmt.setInt(1, IMomID);
+                  pstmt.setInt(2, IMemID);
+                  pstmt.executeUpdate();
+                  pstmt.close();
+               }
             
             catch (java.sql.SQLException e2){
                System.out.println(e2.getMessage());
@@ -327,7 +327,7 @@ public class Fitness {
                   pstmt.close();
                   
                   System.out.println("Course " + JMomID + " cancelled succesfully.");
-                  System.out.println("Cancellation notifications has been sent to participants");
+                  //System.out.println("Cancellation notifications has been sent to participants");
                }
             
                catch (java.sql.SQLException e2){
